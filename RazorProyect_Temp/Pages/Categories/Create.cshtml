@@ -1,0 +1,38 @@
+﻿@page
+@model RazorProyect_Temp.Pages.Categories.CreateModel
+<div class="container">
+    <form method="post">
+       <div class="row border pt-4 mb-3">
+           <div>
+                <h2 class="text-primary">Create Category</h2>
+           </div>
+       </div>
+       @* <div asp-validation-summary="All"></div>  *@
+       @*  <input asp-for="Id" hidden /> *@
+       <div class="row pb-1">
+           <label asp-for="Category.Name" class="pb-2"></label>
+            <input asp-for="Category.Name" type="text" class="form-control" />
+            <span asp-validation-for ="Category.Name" class="text-danger"></span>
+       </div>
+        <div class="row pb-1">
+            <label asp-for="Category.DisplayOrder"  class="pb-2 pt-2"></label>
+            <input asp-for="Category.DisplayOrder"  type="text" class="form-control" />
+            <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
+        </div>
+        <div class="row pt-3">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    Create Category
+                </button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-page="/categories/index" class="btn btn-outline-secondary border form-control">
+                    Back To List
+                </a>
+            </div>
+        </div>
+    </form>
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</div>
