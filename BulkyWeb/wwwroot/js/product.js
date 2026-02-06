@@ -44,11 +44,6 @@ function Delete(url) {
                 success: function (data) {
                     dataTable.ajax.reload();
                     toastr.success(data.message);
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                    });
                 }
             });
         }

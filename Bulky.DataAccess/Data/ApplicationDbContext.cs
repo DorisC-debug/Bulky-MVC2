@@ -16,6 +16,15 @@ namespace Bulky.DataAccess.Data
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Company> Companies { get; set; }
+
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -111,7 +120,41 @@ namespace Bulky.DataAccess.Data
                     CategoryId = 1,
                     ImgUrl = ""
                 }
-                );
+            );
+
+            modelBuilder.Entity<Company>().HasData(
+                new Company
+                {
+                    Id = 1,
+                    Name = "Tech Solutions",
+                    StreetAddress = "123 Tech Lane",
+                    City = "Techville",
+                    State = "TS",
+                    PostalCode = "12345",
+                    PhoneNumber = "123-456-7890"
+                    
+                },
+                new Company
+                {
+                    Id = 2,
+                    Name = "Business Corp",
+                    StreetAddress = "456 Business Rd",
+                    City = "Businesstown",
+                    State = "BC",
+                    PostalCode = "67890",
+                    PhoneNumber = "987-654-3210"
+                },
+                new Company
+                {
+                    Id = 3,
+                    Name = "Enterprise Inc",
+                    StreetAddress = "789 Enterprise Ave",
+                    City = "Enterprisecity",
+                    State = "EC",
+                    PostalCode = "11223",
+                    PhoneNumber = "555-123-4567"
+                }
+            );
         }
 
         

@@ -30,7 +30,7 @@ namespace Bulky.Models
 
         [Required]
         [Display(Name = "Price 1-50")]
-        [Range(1, 50)]
+        [Range(1, 1000)]
         public double Price { get; set; }
 
         [Required]
