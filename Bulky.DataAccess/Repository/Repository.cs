@@ -61,7 +61,8 @@ namespace Bulky.DataAccess.Repository
            
             if (!string.IsNullOrEmpty(includeProperties))
             {
-                foreach (var property in includeProperties.Split([','], StringSplitOptions.RemoveEmptyEntries)) { 
+                foreach (var property in includeProperties
+                    .Split([','], StringSplitOptions.RemoveEmptyEntries)) { 
                 
                    query = query.Include(property);
                 }

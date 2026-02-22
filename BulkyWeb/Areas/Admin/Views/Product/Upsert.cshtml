@@ -12,7 +12,7 @@
 
                 @* <div asp-validation-summary="All"></div>  *@
                 <input asp-for="Product.Id" hidden /> 
-                <input asp-for="Product.ImgUrl" hidden />
+             @*    <input asp-for="Product.ImgUrl" hidden /> *@
                 <div class="row">
                     <div class="col-10">
                         <div class="form-floating py-2">
@@ -69,8 +69,8 @@
                         <div class="row pt-3">
 
                             <div class="form-floating py-2">
-                                <input type="file" name="file" class="form-control shadow" />
-                                <label asp-for="Product.ImgUrl" class="ms-2"></label>
+                                <input type="file" name="files" class="form-control shadow" multiple />
+                                <label asp-for="Product.ProductImages" class="ms-2"></label>
                             </div>
                             <div class="col-6 col-md-3 mt-3">
                                 @if (Model.Product.Id != 0)
@@ -95,8 +95,22 @@
                         </div>
                     </div>
                     <div class="col-2">
-                        <img src="@Model.Product.ImgUrl" width="100%"
-                             style="border-radius:5px; border:1px solid " />
+
+                            @if(Model.Product.ProductImages != null)
+                            {
+                                foreach(var image in Model.Product.ProductImages)
+                                {
+                                    <div class="border p-1 m-2 text-center">
+                                    <img src="@image.ImageUrl" width="100%"
+                                         style="border-radius:5px; border:1px solid #bb9b " />
+                                         <a asp-action="DeleteImage" class="btn btn-danger" asp-route-imageId="@image.Id">
+                                             <i class=" bi bi-trash-fill"></i> Delete
+                                         </a>
+                                    </div>
+                                }
+                            }
+                            @*  <img src="@Model.Product.ImgUrl" width="100%"
+                             style="border-radius:5px; border:1px solid " /> *@
                     </div>
                     </div>
             </form>
@@ -114,7 +128,7 @@
                 'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
                 // Your account includes a free trial of TinyMCE premium features
                 // Try the most popular premium features until Jan 1, 2026:
-                'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+               
               ],
               toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
               tinycomments_mode: 'embedded',
